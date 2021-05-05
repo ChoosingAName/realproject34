@@ -60,13 +60,11 @@ function draw() {
   text("score:"+ score, 40, 45)
  //text("Score : "+score,20,30);
   Engine.update(engine);
-if(gameState == START){
-  text("click to get 5 shots and start the game", 200, 200)
-}
 if(gameState == CLICK||gameState == END){
    for (var i = 0; i < plinkos.length; i++) {
      plinkos[i].display();  
    }
+  if(gameState == CLICK){
    if(frameCount%60===0){
      particles.push(new Particle(random(width/2-250, width/2+250), 10,10));
      thescorething = (random(1,4))
@@ -80,6 +78,7 @@ if(gameState == CLICK||gameState == END){
       score = score + 500
     }
    }
+  }
    for (var j = 0; j < particles.length; j++) {
    
      particles[j].display();
@@ -100,5 +99,6 @@ if(gameState == CLICK||gameState == END){
 }
 
 function mousePressed(){
+  frameCount = 0
   gameState = CLICK
 }
